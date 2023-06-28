@@ -52,7 +52,6 @@
 
 // Iteration 1 - using callbacks
 const potatoesImg = document.getElementById("mashedPotatoesImg");
-potatoesImg.style.display = "block";
 
 getInstruction("mashedPotatoes", 0, (step0) => {
   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step0}</li>`;
@@ -61,23 +60,16 @@ getInstruction("mashedPotatoes", 0, (step0) => {
     document.querySelector("#mashedPotatoes").innerHTML += `<li>${step1}</li>`;
 
     getInstruction("mashedPotatoes", 2, (step2) => {
-      document.querySelector(
-        "#mashedPotatoes"
-      ).innerHTML += `<li>${step2}</li>`;
+      document.querySelector("#mashedPotatoes").innerHTML += `<li>${step2}</li>`;
 
       getInstruction("mashedPotatoes", 3, (step3) => {
-        document.querySelector(
-          "#mashedPotatoes"
-        ).innerHTML += `<li>${step3}</li>`;
+        document.querySelector("#mashedPotatoes").innerHTML += `<li>${step3}</li>`;
 
         getInstruction("mashedPotatoes", 4, (step4) => {
-          document.querySelector(
-            "#mashedPotatoes"
-          ).innerHTML += `<li>${step4}</li>`;
+          document.querySelector("#mashedPotatoes").innerHTML += `<li>${step4}</li>`;
 
-          document.querySelector(
-            "#mashedPotatoes"
-          ).innerHTML += `<li>Mashed Potatoes are ready</li>`;
+          document.querySelector("#mashedPotatoes").innerHTML += `<li>Mashed Potatoes are ready</li>`;
+          potatoesImg.style.display = "block";
         });
       });
     });
@@ -86,7 +78,9 @@ getInstruction("mashedPotatoes", 0, (step0) => {
 
 // // Iteration 2 - using promises
 const steakImg = document.getElementById("steakImg");
-steakImg.style.display = "block";
+setTimeout(() => {
+  steakImg.style.display = "block";
+}, 1000);
 
 obtainInstruction("steak", 0)
   .then((step0) => {
@@ -122,6 +116,7 @@ obtainInstruction("steak", 0)
     return `${steak[8]}`;
   })
   .catch((error) => console.log(error));
+
 // ... Your code here
 
 // // Iteration 3 using async/await
